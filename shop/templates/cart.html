@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .modif_quantity{
+    display: flex;
+    justify-content: space-between;
+    align-item: center;
+    margin-top: 50px;
+    }
+    .modif_quantity a{
+        font-size: 1rem;
+        color: white;
+        font-weight: 900;
+    }
+    .order{
+        color: white;
+    }
+</style>
+<!-- Section Panier -->
+<div class="container">
+    <div class="d-flex row">
+        {% for order in orders %}
+        <div class="card m-3 col-ms-12 col-xl-5 " >
+            <div class="row g-0">
+              <div class="col-4">
+                <img src="{{ order.product.image.url }}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-8 ">
+                <div class="card-body">
+                  <h5 class="card-title">{{ order.product.title }}</h5>
+                  <h6 class="card-text" id="quantity">Quantite: {{ order.quantity }}</h6>
+                  <div class="modif_quantity">
+
+                      <button type="button" class="btn btn-warning text-white" id="moins"><a href="{% url 'del-product' order.product.id %}">-</a></button>
+                      <h5 class="text-warning" id="value">{{ order.total_price }}</h5>
+                      <button type="button" class="btn btn-warning text-white" id="plus"><a href="{% url 'add-product' order.product.id %}">+</a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-warning text-white">
+        <a class="order" href="{% url 'order' %}">
+            <i class="bi bi-cart-check-fill"> Commander</i>
+        </a>
+    </button>
+</div>
+{% endblock %}

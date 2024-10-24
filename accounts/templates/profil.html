@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .container .carte{
+            width: 500px;
+            border-radius: 5px;
+            border: 1px solid rgb(219, 214, 214);
+            margin: 50px auto;
+            padding: 30px;
+        }
+</style>
+<!-- Section Inscription -->
+      <div class="container">
+        <form class="carte" method="post"> {% csrf_token %}
+            <div class="mb-3">
+                <label for="firstname" class="form-label">First name</label>
+                <input type="text" class="form-control" id="firstname" value="{{ user.first_name }}" name="firstname">
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lastname" value="{{ user.last_name }}" name="lastname">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" value="{{ user.email }}" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type=text"" class="form-control" id="username" value="{{ user.username }}" name="username">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success form-control" type="submit">Enregistrer</button>
+            </div>
+        </form>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .container .carte{
+            width: 500px;
+            border-radius: 5px;
+            border: 1px solid rgb(219, 214, 214);
+            margin: 50px auto;
+            padding: 30px;
+        }
+    .messages {
+    list-style: none;
+    padding: 0;
+    }
+
+    .messages .error {
+        color: red;
+    }
+
+    .messages .success {
+        color: green;
+    }
+</style>
+<!-- Section Inscription -->
+      <div class="container">
+        <form class="carte" method="post"> {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+            <p class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="">
+            </p>
+            <p class="mb-3">
+                <label for="password" class="form-label">Mot de Passe</label>
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe" name="password" value="">
+            </p>
+            <p class="mb-3">
+                <button class="btn btn-success form-control" type="submit">Se connecter</button>
+            </p>
+        </form>
+      </div>
+
+{% endblock %}

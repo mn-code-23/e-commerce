@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    a{
+    text-decoration:none;
+    list-style:none;
+    color: black;
+    }
+</style>
+<!-- -->
+      <div class="container mt-2 search_form">
+        <form class="d-flex m-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="item-name">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </div>
+
+      <!-- Section index -->
+      <div class="container mt-4">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-4">
+            {% for product in products %}
+            <div class="col">
+              <div class="card">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title}}</h5>
+                  <h6 style="color: rgb(209, 171, 0);">{{ product.price}}</h6>
+                  <div class="d-flex" role="search">
+                    <button type="button" class="btn btn-warning me-2" style="color: rgb(0, 0, 0);">
+                        <a href="{% url 'product' product.slug %}">Voire</a>
+                    </button>
+                </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+      </div>
+{% endblock %}

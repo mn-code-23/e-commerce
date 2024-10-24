@@ -1,0 +1,84 @@
+{%  extends "base.html" %}
+
+{% block content %}
+<style>
+    .container .carte .info{
+        border-radius: 5px;
+        border: 1px solid rgb(219, 214, 214);
+    }
+    .container .carte .info label{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .title{
+        font-size: 1.2rem;
+        font-weight: 900;
+    }
+    .forme{
+        text-align: center;
+        width:70px;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 15px;
+        border: 1px solid rgb(219, 214, 214);
+    }
+    #quantity{
+        background-color: blue;
+        color: white;
+    }
+
+    #price{
+        background-color: orange;
+        color: dark;
+    }
+    .zone{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .zone .ville{
+        width:70%;
+    }
+</style>
+<div class="container">
+        <div class="carte">
+            {% for order in orders %}
+            <div class="info m-3">
+                <label name="firstname" class="form-label">
+                    <p class="title m-2">{{ order.product.title }}</p>
+                    <p class="forme m-2" id="quantity">Qte: {{ order.quantity }}</p>
+                    <p class="forme m-2" id="price">{{ order.total_price }}</p>
+                </label>
+            </div>
+            {% endfor %}
+            <div class="info m-3">
+                <label name="firstname" class="form-label">
+                    <p class="title m-2">Nombre Total</p>
+<!--                    <p class="forme m-2" id="quantity">Qte: {{ order.quantity }}</p>-->
+                    <p class=" m-2" >hhj</p>
+                </label>
+            </div>
+
+            <form class="carte m-3" method="post"> {% csrf_token %}
+            <p class="mb-3">
+                <label for="address" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="address" placeholder="Votre adresse" name="address">
+            </p>
+                <div class="zone mb-3">
+                    <div class="ville">
+                        <label for="city" class="form-label">Ville</label>
+                        <input type="text" class="form-control" id="city" placeholder="Votre Ville" name="city">
+                    </div>
+                    <div class="pays">
+                        <label for="country" class="form-label">Pays</label>
+                        <input type="text" class="form-control" id="country" placeholder="Votre Pays" name="country">
+                    </div>
+                </div>
+            <p class="mb-3">
+                <button class="btn btn-secondary" type="submit"><a href="">Confirmation</a></button>
+            </p>
+        </form>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .container .carte{
+            width: 500px;
+            border-radius: 5px;
+            border: 1px solid rgb(219, 214, 214);
+            margin: 50px auto;
+            padding: 30px;
+        }
+</style>
+<!-- Section Inscription -->
+      <div class="container">
+        <form class="carte" method="post"> {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de Passe</label>
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe" name="password">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success form-control" type="submit">S'inscrire</button>
+            </div>
+        </form>
+      </div>
+
+{% endblock %}

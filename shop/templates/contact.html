@@ -1,0 +1,50 @@
+{%  extends "base.html" %}
+
+{% block content %}
+<style>
+    .container .carte{
+            width: 500px;
+            border-radius: 5px;
+            border: 1px solid rgb(219, 214, 214);
+            margin: 50px auto;
+            padding: 30px;
+    }
+    .contact{
+        font-size: 2rem;
+        font-weight: 700;
+        color: orange;
+        letter-spacing: 0.3rem;
+    }
+    .message{
+    height: 100px;
+    }
+</style>
+<!-- Section Inscription -->
+      <div class="container">
+        <form class="carte" method="post"> {% csrf_token %}
+            <div class="text-center">
+                <label class="contact form-label">Contact</label>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control " id="username" placeholder="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="email address" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea type="text" class="message form-control" id="message" placeholder="message" name="message"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary form-control" type="submit">Envoyer</button>
+            </div>
+        </form>
+<!--          <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--        <button type="submit">Send</button>-->
+<!--    </form>-->
+      </div>
+{% endblock %}
