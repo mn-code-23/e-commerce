@@ -48,17 +48,10 @@
                 <label name="firstname" class="form-label">
                     <p class="title m-2">{{ order.product.title }}</p>
                     <p class="forme m-2" id="quantity">Qte: {{ order.quantity }}</p>
-                    <p class="forme m-2" id="price">{{ order.total_price }}</p>
+                    <p class="forme m-2 price" id="price">{{ order.total_price }}</p>
                 </label>
             </div>
             {% endfor %}
-            <div class="info m-3">
-                <label name="firstname" class="form-label">
-                    <p class="title m-2">Nombre Total</p>
-<!--                    <p class="forme m-2" id="quantity">Qte: {{ order.quantity }}</p>-->
-                    <p class=" m-2" >hhj</p>
-                </label>
-            </div>
 
             <form class="carte m-3" method="post"> {% csrf_token %}
             <p class="mb-3">
@@ -76,7 +69,7 @@
                     </div>
                 </div>
             <p class="mb-3">
-                <button class="btn btn-secondary" type="submit"><a href="">Confirmation</a></button>
+                <button class="btn btn-secondary" type="submit"><a href="#">Confirmation</a></button>
             </p>
         </form>
         </div>
