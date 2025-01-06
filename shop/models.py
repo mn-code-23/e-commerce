@@ -15,7 +15,7 @@ class Product(models.Model):
     price = models.FloatField(default=0.0)
     stock = models.IntegerField(default=0)
     desc = models.TextField()
-    image = models.ImageField(upload_to="products", blank=True, null=True)
+    image = models.ImageField(upload_to="static/products/", blank=True, null=True)
     date_added = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, related_name='categorie', on_delete=models.CASCADE)
 
